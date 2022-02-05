@@ -1,11 +1,11 @@
 package ru.pavlov.springcourse;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SpringTest {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml"
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                MyCoolSpringConfig.class
         );
 
         //Computer comp = context.getBean("computer", Computer.class);
