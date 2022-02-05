@@ -8,9 +8,8 @@ public class SpringTest {
                 "applicationContext.xml"
         );
 
-        Music music = context.getBean("musicBean", Music.class);
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 
-        MusicPlayer musicPlayer = new MusicPlayer(music);
         musicPlayer.playMusic();
 
         context.close();
