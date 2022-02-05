@@ -24,7 +24,8 @@
     <bean id="musicPlayer"
           class="ru.pavlov.springcourse.MusicPlayer"
           init-method="doMyInit"
-          destroy-method="doMyDestroy">
+          destroy-method="doMyDestroy"
+          factory-method="getMusicPlayer">
         <property name="musicList">
             <list value-type="ru.pavlov.springcourse.Music">
                 <ref bean="classicalMusicBean"/>

@@ -7,12 +7,16 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
+    static public MusicPlayer getMusicPlayer() {
+        return new MusicPlayer();
+    }
+
     // IoC
-    public MusicPlayer(List<Music> musics) {
+    private MusicPlayer(List<Music> musics) {
         this.musicList = musics;
     }
 
-    public MusicPlayer() {}
+    private MusicPlayer() {}
 
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
