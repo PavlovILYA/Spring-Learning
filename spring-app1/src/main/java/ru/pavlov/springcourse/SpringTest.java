@@ -8,26 +8,12 @@ public class SpringTest {
                 "applicationContext.xml"
         );
 
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer OthermusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        Music music = context.getBean("musicBean", Music.class);
 
-        System.out.println(musicPlayer == OthermusicPlayer);
-        System.out.println(musicPlayer);
-        System.out.println(OthermusicPlayer);
+        MusicPlayer musicPlayer = MusicPlayer.getMusicPlayer();
 
-        System.out.println(musicPlayer.getVolume());
-        System.out.println(OthermusicPlayer.getVolume());
-
-        musicPlayer.setVolume(55);
-
-        System.out.println(musicPlayer.getVolume());
-        System.out.println(OthermusicPlayer.getVolume());
-
-
+        musicPlayer.addMusic(music);
         musicPlayer.playMusic();
-        System.out.println(musicPlayer.getName());
-        System.out.println(musicPlayer.getVolume());
-
 
         context.close();
     }

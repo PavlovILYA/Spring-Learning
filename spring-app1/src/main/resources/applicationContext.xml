@@ -5,36 +5,9 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
                             http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/context
-                            http://www.springframework.org/schema/context/spring-context.xsd
-                            http://www.springframework.org/schema/util
-                            http://www.springframework.org/schema/util/spring-util.xsd">
+                            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="classicalMusicBean"
-          class="ru.pavlov.springcourse.ClassicalMusic">
-    </bean>
-    <bean id="rockMusicBean"
-          class="ru.pavlov.springcourse.RockMusic">
-    </bean>
-    <bean id="rapMusicBean"
-          class="ru.pavlov.springcourse.RapMusic">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="ru.pavlov.springcourse.MusicPlayer"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getMusicPlayer">
-        <property name="musicList">
-            <list value-type="ru.pavlov.springcourse.Music">
-                <ref bean="classicalMusicBean"/>
-                <ref bean="rockMusicBean"/>
-                <ref bean="rapMusicBean"/>
-            </list>
-        </property>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    <context:component-scan base-package="ru.pavlov.springcourse"/>
 
 </beans>

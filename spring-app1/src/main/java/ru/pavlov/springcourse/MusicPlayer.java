@@ -27,6 +27,10 @@ public class MusicPlayer {
             System.out.println("Playing: " + music.getSong());
     }
 
+    public void addMusic(Music music) {
+        musicList.add(music);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
