@@ -38,4 +38,12 @@ public class MusicPlayer {
     public int getVolume() {
         return volume;
     }
+
+    public void doMyInit() {
+        System.out.println("do: doMyInit()");
+    }
+
+    public void doMyDestroy() {
+        System.out.println("do: doMyDestroy()");
+    }
 }
