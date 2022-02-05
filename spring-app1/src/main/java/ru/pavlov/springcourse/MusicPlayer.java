@@ -1,17 +1,21 @@
 package ru.pavlov.springcourse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
+    private HashMap<MusicType, Music> musicHashMap = new HashMap();
     @Autowired
     private ClassicalMusic clMusic;
+    @Value("${musicPlayer.name}")
     private String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
 
     static public MusicPlayer getMusicPlayer() {
@@ -19,47 +23,35 @@ public class MusicPlayer {
     }
 
     // IoC
-    private MusicPlayer(List<Music> musics) {
-        this.musicList = musics;
+    private MusicPlayer(HashMap<MusicType, Music> musics) {
+        this.musicHashMap = musics;
     }
 
     @Autowired
     private MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
                         @Qualifier("rockMusic") Music rockMusic,
                         @Qualifier("rapMusic") Music rapMusic) {
-        musicList.add(classicalMusic);
-        musicList.add(rockMusic);
-        musicList.add(rapMusic);
+        musicHashMap.put(MusicType.CLASSICAL, classicalMusic);
+        musicHashMap.put(MusicType.ROCK, rockMusic);
+        musicHashMap.put(MusicType.RAP, rapMusic);
     }
 
     private MusicPlayer() {}
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+//    public void setMusicList(List<Music> musicList) {
+//        this.musicList = musicList;
+//    }
+
+    public String playMusic(MusicType musicType) {
+        return musicHashMap.get(musicType).getSong();
     }
 
-    public String playMusic() {
-        String playing = "[";
-        for (Music music : musicList)
-            playing += "Playing: " + music.getSong() + " ";
-        playing += "]";
-        return playing;
-    }
-
-    public void addMusic(Music music) {
-        musicList.add(music);
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void addMusic(Music music) {
+//        musicList.add(music);
+//    }
 
     public String getName() {
         return name;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
     }
 
     public int getVolume() {
