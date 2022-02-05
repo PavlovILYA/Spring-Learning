@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Component
 public class MusicPlayer {
     private HashMap<MusicType, Music> musicHashMap = new HashMap();
-    @Autowired
-    private ClassicalMusic clMusic;
     @Value("${musicPlayer.name}")
     private String name;
     @Value("${musicPlayer.volume}")
@@ -27,8 +24,7 @@ public class MusicPlayer {
         this.musicHashMap = musics;
     }
 
-    @Autowired
-    private MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
+    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
                         @Qualifier("rockMusic") Music rockMusic,
                         @Qualifier("rapMusic") Music rapMusic) {
         musicHashMap.put(MusicType.CLASSICAL, classicalMusic);
@@ -64,9 +60,5 @@ public class MusicPlayer {
 
     public void doMyDestroy() {
         System.out.println("do: doMyDestroy()");
-    }
-
-    public String getClMusic() {
-        return clMusic.getSong();
     }
 }

@@ -8,7 +8,6 @@ import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.Random;
 
-@Component
 public class RapMusic implements Music {
     ArrayList<String> songs = new ArrayList<>();
 
