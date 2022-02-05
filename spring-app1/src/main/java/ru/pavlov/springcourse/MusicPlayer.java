@@ -2,6 +2,8 @@ package ru.pavlov.springcourse;
 
 public class MusicPlayer {
     private Music music;
+    private String name;
+    private int volume;
 
     // IoC
     public MusicPlayer(Music music) {
@@ -16,5 +18,21 @@ public class MusicPlayer {
 
     public void playMusic() {
         System.out.println("Playing: " + music.getSong());
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public int getVolume() {
+        return volume;
     }
 }
