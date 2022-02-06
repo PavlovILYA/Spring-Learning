@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+
 public class MusicPlayer {
     private HashMap<MusicType, Music> musicHashMap = new HashMap();
     @Value("${musicPlayer.name}")
