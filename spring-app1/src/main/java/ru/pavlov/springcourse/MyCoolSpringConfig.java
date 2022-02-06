@@ -5,9 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.HashMap;
+
 @Configuration
 @PropertySource("classpath:musicPlayer.properties")
-@ComponentScan("ru.pavlov.springcourse")
 public class MyCoolSpringConfig {
     @Bean
     public ClassicalMusic classicalMusic() {
@@ -25,8 +26,17 @@ public class MyCoolSpringConfig {
     }
 
     @Bean
+    public HashMap<MusicType, Music> musicHashMap() {
+        HashMap<MusicType, Music> musicMap = new HashMap<>();
+        musicMap.put(MusicType.CLASSICAL, new ClassicalMusic());
+        musicMap.put(MusicType.ROCK, new RockMusic());
+        musicMap.put(MusicType.RAP, new RapMusic());
+        return musicMap;
+    }
+
+    @Bean
     public MusicPlayer musicPlayer() {
-        return new MusicPlayer(classicalMusic(), rockMusic(), rapMusic());
+        return new MusicPlayer(musicHashMap());
     }
 
     @Bean
