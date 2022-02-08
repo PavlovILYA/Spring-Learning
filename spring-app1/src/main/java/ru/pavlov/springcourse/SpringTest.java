@@ -11,6 +11,8 @@ public class SpringTest {
 
         System.out.println(comp.turnOnMusic(MusicType.RAP));
 
+        System.out.println("br1");
+
 //        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
 
 //        System.out.println(musicPlayer.getVolume());
